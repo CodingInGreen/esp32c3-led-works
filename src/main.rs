@@ -62,7 +62,7 @@ fn main() -> Result<()> {
 
     let peripherals = Peripherals::take()?;
     // ANCHOR: led
-    let mut led = WS2812RMT::new(peripherals.pins.gpio2, peripherals.rmt.channel1)?;
+    let mut led = WS2812RMT::new(peripherals.pins.gpio2, peripherals.rmt.channel0)?;
     // ANCHOR_END: led
 
     // Configures the button
@@ -97,7 +97,7 @@ fn main() -> Result<()> {
 #[allow(unused)]
 // ANCHOR: random_light
 fn random_light(led: &mut WS2812RMT) {
-    let mut color = RGB8::new(0, 0, 0);
+    let mut color = RGB8::new(255, 255, 255);
     unsafe {
         let r = esp_random() as u8;
         let g = esp_random() as u8;
